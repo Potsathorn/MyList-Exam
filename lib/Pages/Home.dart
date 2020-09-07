@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Sorry I forget Tag Edit!!! Tag part1"),
+          title: Text("My List"),
         ),
         body: ListView(
           children: [
@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
                 "${personList[0].score}",
                 style: Theme.of(context).textTheme.headline3,
               ),
-              onTap: () {
-                print("Mor MOr");
+              onTap: (){
+                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[0]);
               },
             ),
             ListTile(
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                print("Mor MOr");
+                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[1]);
               },
             ),
             ListTile(
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                print("Mor MOr");
+                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[2]);
               },
             ),
             ListTile(
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                print("Mor MOr");
+                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[3]);
               },
             ),
           ],
