@@ -7,6 +7,13 @@ class Person {
   Person(this.name, this.score);
 }
 
+class PassingData {
+  Person personWhoClicked;
+  List<Person> allPerson = [];
+
+  PassingData(this.personWhoClicked, this.allPerson);
+}
+
 class HomePage extends StatelessWidget {
   List<Person> personList = [
     Person("Tinky Winky", 80),
@@ -14,6 +21,7 @@ class HomePage extends StatelessWidget {
     Person("Lala", 85),
     Person("Po", 60),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +36,9 @@ class HomePage extends StatelessWidget {
                 "${personList[0].score}",
                 style: Theme.of(context).textTheme.headline3,
               ),
-              onTap: (){
-                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[0]);
+              onTap: () {
+                Navigator.pushNamed(context, "/showDtail_page",
+                    arguments: PassingData(personList[0], personList));
               },
             ),
             ListTile(
@@ -39,7 +48,8 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[1]);
+                Navigator.pushNamed(context, "/showDtail_page",
+                    arguments: PassingData(personList[1], personList));
               },
             ),
             ListTile(
@@ -49,7 +59,8 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[2]);
+                Navigator.pushNamed(context, "/showDtail_page",
+                    arguments: PassingData(personList[2], personList));
               },
             ),
             ListTile(
@@ -59,7 +70,8 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                Navigator.pushNamed(context, "/showDtail_page",arguments: personList[3]);
+                Navigator.pushNamed(context, "/showDtail_page",
+                    arguments: PassingData(personList[3], personList));
               },
             ),
           ],
