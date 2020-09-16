@@ -13,7 +13,7 @@ class _ShowDetailState extends State<ShowDetail> {
   @override
   Widget build(BuildContext context) {
     //var person = Person(null, null);
-    final PassingData args = ModalRoute.of(context).settings.arguments;
+    PassingData args = ModalRoute.of(context).settings.arguments;
 
     Person findNextPerson() {
       List<Person> higherScore = [];
@@ -68,7 +68,9 @@ class _ShowDetailState extends State<ShowDetail> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/showEdit_page');
+                          Navigator.pushNamed(context, '/showEdit_page',
+                              arguments: PassingData(
+                                  args.personWhoClicked, args.allPerson));
                         },
                         child: Icon(
                           Icons.edit,
