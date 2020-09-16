@@ -19,6 +19,7 @@ class _EditPageState extends State<StatefulWidget> {
         title: Text("Edit Page"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -31,11 +32,9 @@ class _EditPageState extends State<StatefulWidget> {
                 passedData.personWhoClicked.name,
                 style: Theme.of(context).textTheme.headline5,
               ),
-              
             ],
           ),
           Container(
-            
             child: SizedBox(
               width: 500.0,
               //height: 70.0,
@@ -50,55 +49,179 @@ class _EditPageState extends State<StatefulWidget> {
             color: Colors.blue,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonBar(
-                children: [Text("1")],
-              ),
-              ButtonBar(
-                children: [Text("2")],
-              ),
-              ButtonBar(
-                children: [Text("3")],
-              ),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "1",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "2",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "3",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonBar(
-                children: [Text("4")],
-              ),
-              ButtonBar(
-                children: [Text("5")],
-              ),
-              ButtonBar(
-                children: [Text("6")],
-              ),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "4",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "5",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "6",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonBar(
-                children: [Text("7")],
-              ),
-              ButtonBar(
-                children: [Text("8")],
-              ),
-              ButtonBar(
-                children: [Text("9")],
-              ),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "7",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "8",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "9",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonBar(
-                children: [Text("CLR")],
-              ),
-              ButtonBar(
-                children: [Text("0")],
-              ),
-              ButtonBar(
-                children: [Text("OK")],
-              ),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "CLR",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "0",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
+              Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  width: 80,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: Center(
+                    child: Text(
+                      "OK",
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  )),
             ],
           ),
         ],
