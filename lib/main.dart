@@ -1,3 +1,4 @@
+import 'package:MyList/Pages/Edit.dart';
 import 'package:MyList/Pages/Home.dart';
 import 'package:MyList/Pages/Show_Detail.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
-      routes: {'/showDtail_page':(context) => ShowDetail()},
+      routes: {
+        '/showDtail_page': (context) => ShowDetail(),
+        '/showEdit_page': (context) => EditPage(),
+      },
     );
   }
 }

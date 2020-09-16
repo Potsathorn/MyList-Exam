@@ -66,10 +66,15 @@ class _ShowDetailState extends State<ShowDetail> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Icon(
-                        Icons.edit,
-                        color: Colors.white,
-                      )
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/showEdit_page');
+                        },
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   ),
                   ListTile(
