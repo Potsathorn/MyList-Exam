@@ -10,6 +10,7 @@ class ShowDetail extends StatefulWidget {
 }
 
 class _ShowDetailState extends State<ShowDetail> {
+  
   @override
   Widget build(BuildContext context) {
     //var person = Person(null, null);
@@ -55,30 +56,39 @@ class _ShowDetailState extends State<ShowDetail> {
       // appBar: AppBar(
       //   title: Text("Show Detail"),
       // ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.edit),
+        onPressed: () => {
+          Navigator.pushNamed(context, '/showEdit_page',
+              arguments: PassingData(args.personWhoClicked, args.allPerson))
+        },
+        backgroundColor: Colors.black,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: ListView(
         children: [
           Container(
             color: Colors.blue,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
+              padding: const EdgeInsets.fromLTRB(10, 60, 10, 30),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/showEdit_page',
-                              arguments: PassingData(
-                                  args.personWhoClicked, args.allPerson));
-                        },
-                        child: Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.end,
+                  //   children: [
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         Navigator.pushNamed(context, '/showEdit_page',
+                  //             arguments: PassingData(
+                  //                 args.personWhoClicked, args.allPerson));
+                  //       },
+                  //       child: Icon(
+                  //         Icons.edit,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   ListTile(
                     title: Text(
                       args.personWhoClicked.name,
@@ -103,10 +113,15 @@ class _ShowDetailState extends State<ShowDetail> {
           ),
           ListTile(
             title: Text(nextPerson.name),
-            trailing: Text(
-              "${nextPerson.score}",
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            trailing: (nextPerson.name != "No Next Person")
+                ? Text(
+                    "${nextPerson.score}",
+                    style: Theme.of(context).textTheme.headline4,
+                  )
+                : Text(
+                    "--:--",
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
           ),
         ],
       ),
