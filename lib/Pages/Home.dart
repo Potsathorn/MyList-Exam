@@ -14,23 +14,27 @@ class PassingData {
   PassingData(this.personWhoClicked, this.allPerson);
 }
 
-class HomePage extends StatelessWidget {
-  List<Person> personList = [
-    Person("Tinky Winky", 80),
-    Person("Dipsy", 77),
-    Person("Lala", 85),
-    Person("Po", 60),
-  ];
+List<Person> personList = [
+  Person("Tinky Winky", 80),
+  Person("Dipsy", 77),
+  Person("Lala", 85),
+  Person("Po", 60),
+];
 
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //PassingData passedData1 = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("My List"),
-        ),
+        // appBar: AppBar(
+        //   title: Text("My List"),
+        // ),
         body: ListView(
           children: [
-            ListTile(
+            
+            Text("My List",style: Theme.of(context).textTheme.headline2,),
+            Card(child: ListTile(
+              
               title: Text("1 " + personList[0].name),
               trailing: Text(
                 "${personList[0].score}",
@@ -40,7 +44,8 @@ class HomePage extends StatelessWidget {
                 Navigator.pushNamed(context, "/showDtail_page",
                     arguments: PassingData(personList[0], personList));
               },
-            ),
+            ),),
+            
             ListTile(
               title: Text("2 " + personList[1].name),
               trailing: Text(

@@ -10,10 +10,13 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<StatefulWidget> {
+  TextEditingController _controller;
   String showScore;
+  String showName;
   @override
   Widget build(BuildContext context) {
     PassingData passedData = ModalRoute.of(context).settings.arguments;
+   // Person person1 = passedData.personWhoClicked;
     //showScore = "";
 
     //create widget
@@ -30,8 +33,9 @@ class _EditPageState extends State<StatefulWidget> {
                 showScore += val;
               else if (val == "CLR")
                 showScore = "";
-              else
+              else {
                 print(showScore);
+              }
             });
           },
           child: Container(
@@ -44,7 +48,7 @@ class _EditPageState extends State<StatefulWidget> {
               child: Center(
                 child: Text(
                   val,
-                  // style: ,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
               )));
     }
@@ -64,10 +68,40 @@ class _EditPageState extends State<StatefulWidget> {
                 "Name : ",
                 style: Theme.of(context).textTheme.headline5,
               ),
-              Text(
-                passedData.personWhoClicked.name,
-                style: Theme.of(context).textTheme.headline5,
-              ),
+              Container(
+                  width: 190,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: (showName != null)
+                          ? showName = showName
+                          : showName = passedData.personWhoClicked.name,
+                      hintStyle: Theme.of(context).textTheme.headline5,
+                    ),
+                    onSubmitted: (String value) async {
+                      await showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Thanks!'),
+                            content: Text('You typed "$value".'),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () {
+                                  passedData.personWhoClicked.name = value;
+                                  Navigator.pushNamed(context, '/showHome_page',
+                              arguments: PassingData(
+                                  passedData.personWhoClicked, passedData.allPerson));
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ))
             ],
           ),
           Container(
@@ -96,9 +130,9 @@ class _EditPageState extends State<StatefulWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonPad("1"),
-              ButtonPad("2"),
-              ButtonPad("3"),
+              ButtonPad("7"),
+              ButtonPad("8"),
+              ButtonPad("9"),
             ],
           ),
           Row(
@@ -112,9 +146,9 @@ class _EditPageState extends State<StatefulWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ButtonPad("7"),
-              ButtonPad("8"),
-              ButtonPad("9"),
+              ButtonPad("1"),
+              ButtonPad("2"),
+              ButtonPad("3"),
             ],
           ),
           Row(

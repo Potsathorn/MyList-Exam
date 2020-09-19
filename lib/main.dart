@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: HomePage(),
       routes: {
+        '/showHome_page': (context) => HomePage(),
         '/showDtail_page': (context) => ShowDetail(),
         '/showEdit_page': (context) => EditPage(),
       },
