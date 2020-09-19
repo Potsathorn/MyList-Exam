@@ -16,6 +16,14 @@ class _ShowDetailState extends State<ShowDetail> {
     //var person = Person(null, null);
     PassingData args = ModalRoute.of(context).settings.arguments;
 
+    int findID(String nameVal){
+      for(int d = 0;d<args.allPerson.length;d++){
+        if(args.allPerson[d].name == nameVal){
+          return d+1;
+        }
+      }
+    }
+
     Person findNextPerson() {
       List<Person> higherScore = [];
       int maxScore = args.allPerson[0].score;
@@ -60,12 +68,13 @@ class _ShowDetailState extends State<ShowDetail> {
         child: Icon(Icons.edit),
         onPressed: () => {
           Navigator.pushNamed(context, '/showEdit_page',
-              arguments: PassingData(args.personWhoClicked, args.allPerson))
+              arguments: PassingData(args.id,args.personWhoClicked, args.allPerson))
         },
         backgroundColor: Colors.black,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: ListView(
+       
         children: [
           Container(
             color: Colors.blue,
@@ -90,7 +99,7 @@ class _ShowDetailState extends State<ShowDetail> {
                   //   ],
                   // ),
                   ListTile(
-                    title: Text(
+                    title: Text("${args.id} " +
                       args.personWhoClicked.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
@@ -112,7 +121,8 @@ class _ShowDetailState extends State<ShowDetail> {
             )),
           ),
           ListTile(
-            title: Text(nextPerson.name),
+            title: (nextPerson.name != "No Next Person")
+                ? Text("${findID(nextPerson.name)} " + nextPerson.name) : Text(nextPerson.name),
             trailing: (nextPerson.name != "No Next Person")
                 ? Text(
                     "${nextPerson.score}",

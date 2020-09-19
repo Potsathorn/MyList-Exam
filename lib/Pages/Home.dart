@@ -2,16 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Person {
+ 
   String name;
   int score;
   Person(this.name, this.score);
 }
 
 class PassingData {
+  int id;
   Person personWhoClicked;
   List<Person> allPerson = [];
 
-  PassingData(this.personWhoClicked, this.allPerson);
+  PassingData(this.id,this.personWhoClicked, this.allPerson);
 }
 
 List<Person> personList = [
@@ -37,16 +39,17 @@ class HomePage extends StatelessWidget {
               style: Theme.of(context).textTheme.headline2,
             ),
             for (int i = 0; i < personList.length; i++)
+
               Card(
                 child: ListTile(
-                  title: Text("${i + 1}" + personList[i].name),
+                  title: Text("${i + 1} " + personList[i].name),
                   trailing: Text(
                     "${personList[i].score}",
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   onTap: () {
                     Navigator.pushNamed(context, "/showDtail_page",
-                        arguments: PassingData(personList[i], personList));
+                        arguments: PassingData(i+1,personList[i], personList));
                   },
                 ),
               ),
@@ -89,7 +92,7 @@ class HomePage extends StatelessWidget {
           onPressed: () => {
             personList.add(newPerson),
             Navigator.pushNamed(context, '/showEdit_page',
-                arguments: PassingData(newPerson, personList))
+                arguments: PassingData(personList.length,newPerson, personList))
           },
           backgroundColor: Colors.black,
           child: Icon(
