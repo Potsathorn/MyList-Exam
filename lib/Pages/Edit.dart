@@ -10,13 +10,13 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<StatefulWidget> {
-  TextEditingController _controller;
+  var controller = TextEditingController();
   String showScore;
   String showName;
   @override
   Widget build(BuildContext context) {
     PassingData passedData = ModalRoute.of(context).settings.arguments;
-   // Person person1 = passedData.personWhoClicked;
+    // Person person1 = passedData.personWhoClicked;
     //showScore = "";
 
     //create widget
@@ -28,6 +28,10 @@ class _EditPageState extends State<StatefulWidget> {
                 ? showScore = showScore
                 : showScore = "${passedData.personWhoClicked.score}";
 
+            (showName != null)
+                ? showName = showName
+                : showName = passedData.personWhoClicked.name;
+
             setState(() {
               if (val != "CLR" && val != "OK")
                 showScore += val;
@@ -35,6 +39,15 @@ class _EditPageState extends State<StatefulWidget> {
                 showScore = "";
               else {
                 print(showScore);
+                (controller.text != "")
+                ? showName = controller.text
+                : showName = passedData.personWhoClicked.name;
+                //showName = controller.text;
+                passedData.personWhoClicked.name = showName;
+                passedData.personWhoClicked.score = int.parse(showScore);
+                Navigator.pushNamed(context, '/showHome_page',
+                    arguments: PassingData(
+                        passedData.personWhoClicked, passedData.allPerson));
               }
             });
           },
@@ -72,35 +85,35 @@ class _EditPageState extends State<StatefulWidget> {
                   width: 190,
                   child: TextField(
                     textAlign: TextAlign.center,
-                    controller: _controller,
+                    controller: controller,
                     decoration: InputDecoration(
                       hintText: (showName != null)
                           ? showName = showName
                           : showName = passedData.personWhoClicked.name,
                       hintStyle: Theme.of(context).textTheme.headline5,
                     ),
-                    onSubmitted: (String value) async {
-                      await showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Thanks!'),
-                            content: Text('You typed "$value".'),
-                            actions: <Widget>[
-                              FlatButton(
-                                onPressed: () {
-                                  passedData.personWhoClicked.name = value;
-                                  Navigator.pushNamed(context, '/showHome_page',
-                              arguments: PassingData(
-                                  passedData.personWhoClicked, passedData.allPerson));
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
+                    // onSubmitted: (String value) async {
+                    //   await showDialog<void>(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return AlertDialog(
+                    //         title: const Text('Thanks!'),
+                    //         content: Text('You typed "$value".'),
+                    //         actions: <Widget>[
+                    //           FlatButton(
+                    //             onPressed: () {
+                    //               passedData.personWhoClicked.name = value;
+                    //               Navigator.pushNamed(context, '/showHome_page',
+                    //           arguments: PassingData(
+                    //               passedData.personWhoClicked, passedData.allPerson));
+                    //             },
+                    //             child: const Text('OK'),
+                    //           ),
+                    //         ],
+                    //       );
+                    //     },
+                    //   );
+                    // },
                   ))
             ],
           ),
