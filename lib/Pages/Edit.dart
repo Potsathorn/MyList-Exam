@@ -1,3 +1,4 @@
+import 'package:MyList/Component/PassingData_form.dart';
 import 'package:MyList/Pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,12 +17,8 @@ class _EditPageState extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     PassingData passedData = ModalRoute.of(context).settings.arguments;
-    // Person person1 = passedData.personWhoClicked;
-    //showScore = "";
 
-    //create widget
-
-    Widget ButtonPad(String val) {
+    Widget buttonPad(String val) {
       return GestureDetector(
           onTap: () {
             (showScore != null)
@@ -42,7 +39,7 @@ class _EditPageState extends State<StatefulWidget> {
                 (controller.text != "")
                     ? showName = controller.text
                     : showName = passedData.personWhoClicked.name;
-                //showName = controller.text;
+               
                 passedData.personWhoClicked.name = showName;
                 passedData.personWhoClicked.score = int.parse(showScore);
                 Navigator.pushNamed(context, '/showHome_page',
@@ -102,28 +99,6 @@ class _EditPageState extends State<StatefulWidget> {
                               : showName = passedData.personWhoClicked.name,
                           hintStyle: Theme.of(context).textTheme.headline5,
                         ),
-                        // onSubmitted: (String value) async {
-                        //   await showDialog<void>(
-                        //     context: context,
-                        //     builder: (BuildContext context) {
-                        //       return AlertDialog(
-                        //         title: const Text('Thanks!'),
-                        //         content: Text('You typed "$value".'),
-                        //         actions: <Widget>[
-                        //           FlatButton(
-                        //             onPressed: () {
-                        //               passedData.personWhoClicked.name = value;
-                        //               Navigator.pushNamed(context, '/showHome_page',
-                        //           arguments: PassingData(
-                        //               passedData.personWhoClicked, passedData.allPerson));
-                        //             },
-                        //             child: const Text('OK'),
-                        //           ),
-                        //         ],
-                        //       );
-                        //     },
-                        //   );
-                        // },
                       ))
                 ],
               ),
@@ -162,33 +137,33 @@ class _EditPageState extends State<StatefulWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ButtonPad("7"),
-                        ButtonPad("8"),
-                        ButtonPad("9"),
+                        buttonPad("7"),
+                        buttonPad("8"),
+                        buttonPad("9"),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ButtonPad("4"),
-                        ButtonPad("5"),
-                        ButtonPad("6"),
+                        buttonPad("4"),
+                        buttonPad("5"),
+                        buttonPad("6"),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ButtonPad("1"),
-                        ButtonPad("2"),
-                        ButtonPad("3"),
+                        buttonPad("1"),
+                        buttonPad("2"),
+                        buttonPad("3"),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ButtonPad("CLR"),
-                        ButtonPad("0"),
-                        ButtonPad("OK"),
+                        buttonPad("CLR"),
+                        buttonPad("0"),
+                        buttonPad("OK"),
                       ],
                     ),
                   ],

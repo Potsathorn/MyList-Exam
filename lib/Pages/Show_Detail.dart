@@ -1,3 +1,5 @@
+import 'package:MyList/Component/PassingData_form.dart';
+import 'package:MyList/Component/Person.dart';
 import 'package:MyList/Pages/Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +12,18 @@ class ShowDetail extends StatefulWidget {
 }
 
 class _ShowDetailState extends State<ShowDetail> {
-  
   @override
   Widget build(BuildContext context) {
-    //var person = Person(null, null);
     PassingData args = ModalRoute.of(context).settings.arguments;
 
-    int findID(String nameVal){
-      for(int d = 0;d<args.allPerson.length;d++){
-        if(args.allPerson[d].name == nameVal){
-          return d+1;
+//--------------------Method Part-----------------
+    int findID(String nameVal) {
+      for (int d = 0; d < args.allPerson.length; d++) {
+        if (args.allPerson[d].name == nameVal) {
+          return d + 1;
         }
       }
+      return -1;
     }
 
     Person findNextPerson() {
@@ -56,10 +58,8 @@ class _ShowDetailState extends State<ShowDetail> {
       return Person("No Next Person", args.personWhoClicked.score);
     }
 
-    //  List<Person> allPerson = [];
+    //-----------------\End of Method Part-------------
     Person nextPerson = findNextPerson();
-
-    //person = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       // appBar: AppBar(
       //   title: Text("Show Detail"),
@@ -68,13 +68,13 @@ class _ShowDetailState extends State<ShowDetail> {
         child: Icon(Icons.edit),
         onPressed: () => {
           Navigator.pushNamed(context, '/showEdit_page',
-              arguments: PassingData(args.id,args.personWhoClicked, args.allPerson))
+              arguments:
+                  PassingData(args.id, args.personWhoClicked, args.allPerson))
         },
         backgroundColor: Colors.black,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: ListView(
-       
         children: [
           Container(
             color: Colors.blue,
@@ -82,25 +82,9 @@ class _ShowDetailState extends State<ShowDetail> {
               padding: const EdgeInsets.fromLTRB(10, 60, 10, 30),
               child: Column(
                 children: [
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.end,
-                  //   children: [
-                  //     GestureDetector(
-                  //       onTap: () {
-                  //         Navigator.pushNamed(context, '/showEdit_page',
-                  //             arguments: PassingData(
-                  //                 args.personWhoClicked, args.allPerson));
-                  //       },
-                  //       child: Icon(
-                  //         Icons.edit,
-                  //         color: Colors.white,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                   ListTile(
-                    title: Text("${args.id} " +
-                      args.personWhoClicked.name,
+                    title: Text(
+                      "${args.id} " + args.personWhoClicked.name,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     trailing: Text(
@@ -122,7 +106,8 @@ class _ShowDetailState extends State<ShowDetail> {
           ),
           ListTile(
             title: (nextPerson.name != "No Next Person")
-                ? Text("${findID(nextPerson.name)} " + nextPerson.name) : Text(nextPerson.name),
+                ? Text("${findID(nextPerson.name)} " + nextPerson.name)
+                : Text(nextPerson.name),
             trailing: (nextPerson.name != "No Next Person")
                 ? Text(
                     "${nextPerson.score}",
@@ -135,9 +120,6 @@ class _ShowDetailState extends State<ShowDetail> {
           ),
         ],
       ),
-      // appBar: AppBar(
-      //   title: Text("1 "+person1.name),
-      // ),
     );
   }
 }
