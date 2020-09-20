@@ -1,6 +1,6 @@
 import 'package:MyList/Component/PassingData_form.dart';
 import 'package:MyList/Component/Person.dart';
-import 'package:MyList/Pages/Home.dart';
+//import 'package:MyList/Pages/Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
