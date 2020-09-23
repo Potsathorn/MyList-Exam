@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //Remove Debug Banner
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
       routes: {
         '/showHome_page': (context) => HomePage(),
