@@ -50,7 +50,7 @@ class _HomePagestate extends State<HomePage> {
                               (colorTheme)
                                   ? colorCodeList = colorfulColors
                                   : colorCodeList = monochromaticColors;
-
+                              //Decoration add Monochromatic/Colorful Theme
                               (colorTheme)
                                   ? themeName = "Colorful Theme"
                                   : themeName = "Monochromatic";
