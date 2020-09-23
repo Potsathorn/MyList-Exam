@@ -1,6 +1,6 @@
+import 'package:MyList/Component/Color_Code.dart';
 import 'package:MyList/Component/PassingData_form.dart';
 import 'package:MyList/Component/Person.dart';
-//import 'package:MyList/Pages/Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +29,7 @@ class _ShowDetailState extends State<ShowDetail> {
     Person findNextPerson() {
       List<Person> higherScore = [];
       int maxScore = args.allPerson[0].score;
+
       for (var k in args.allPerson) {
         if (k.score >= maxScore) {
           maxScore = k.score;
@@ -61,9 +62,6 @@ class _ShowDetailState extends State<ShowDetail> {
     //-----------------\End of Method Part-------------
     Person nextPerson = findNextPerson();
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Show Detail"),
-      // ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.edit),
         onPressed: () => {
@@ -71,13 +69,13 @@ class _ShowDetailState extends State<ShowDetail> {
               arguments:
                   PassingData(args.id, args.personWhoClicked, args.allPerson))
         },
-        backgroundColor: Colors.black,
+        backgroundColor: Color(colorCodeList[(args.id) % colorCodeList.length]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: ListView(
         children: [
           Container(
-            color: Colors.blue,
+            color: Color(colorCodeList[(args.id - 1) % colorCodeList.length]),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 60, 10, 30),
               child: Column(

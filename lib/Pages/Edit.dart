@@ -1,5 +1,5 @@
+import 'package:MyList/Component/Color_Code.dart';
 import 'package:MyList/Component/PassingData_form.dart';
-//import 'package:MyList/Pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -43,7 +43,7 @@ class _EditPageState extends State<StatefulWidget> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Confirm!'),
+              title: const Text('Confirm ?'),
               content: Text(
                   'Name : ' + nameChanged + '    Score : ' + '$scoreChanged'),
               actions: <Widget>[
@@ -75,7 +75,6 @@ class _EditPageState extends State<StatefulWidget> {
               else if (val == "CLR")
                 showScore = "";
               else {
-                print(showScore);
                 if (showName != "") {
                   (controller.text.isNotEmpty)
                       ? showName = controller.text
@@ -103,8 +102,10 @@ class _EditPageState extends State<StatefulWidget> {
               padding: const EdgeInsets.all(3.0),
               width: 80,
               height: 60,
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Color(colorCodeList[
+                          (passedData.id - 1) % colorCodeList.length]))),
               child: Center(
                 child: Text(
                   val,
@@ -113,20 +114,22 @@ class _EditPageState extends State<StatefulWidget> {
               )));
     }
 
-    // final PassingData passedData = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Page"),
+        automaticallyImplyLeading: false,
+        title: (passedData.personWhoClicked.name != "")
+            ? Center(
+                child: Text(
+                    "Edit " + passedData.personWhoClicked.name + "'s Detail"))
+            : Center(child: Text("Add New Person")),
+        backgroundColor:
+            Color(colorCodeList[(passedData.id - 1) % colorCodeList.length]),
       ),
       body: ListView(
         shrinkWrap: false,
-        padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
-        //scrollDirection: Axis.vertical,
-
+        padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
         children: [
           Column(
-            //mainAxisSize: MainAxisSize.max,
-
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
@@ -155,7 +158,6 @@ class _EditPageState extends State<StatefulWidget> {
                 child: Container(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    //height: 70.0,
                     child: Center(
                         child: (showScore != null)
                             ? Text(
@@ -165,19 +167,14 @@ class _EditPageState extends State<StatefulWidget> {
                             : Text(
                                 "${passedData.personWhoClicked.score}",
                                 style: Theme.of(context).textTheme.headline2,
-                              )
-                        // Text(
-                        //   showScore,
-                        //   style: Theme.of(context).textTheme.headline2,
-                        // ),
-                        ),
+                              )),
                   ),
-                  //Text("${passedData.personWhoClicked.score}"),
-                  color: Colors.blue,
+                  color: Color(colorCodeList[
+                      (passedData.id - 1) % colorCodeList.length]),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

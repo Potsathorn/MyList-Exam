@@ -5,8 +5,10 @@ class Person {
 }
 
 List<Person> personList = [
-  Person("Tinky Winky", 80),
+  Person("Tinky-Winky", 80),
   Person("Dipsy", 77),
   Person("Lala", 85),
-  Person("Po", 60),
+  Person("Po", 92),
+  Person("Noo-Noo", 60),
 ];
+
