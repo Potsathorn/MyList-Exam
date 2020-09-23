@@ -113,6 +113,7 @@ class _HomePagestate extends State<HomePage> {
                       title: Text("My List",
                           style: Theme.of(context).textTheme.headline3),
                       trailing: GestureDetector(
+                        //More Feature :  sort max/min score
                         onTap: () {
                           setState(() {
                             sortScore = !sortScore;
@@ -166,6 +167,7 @@ class _HomePagestate extends State<HomePage> {
                       ],
                     ),
                     subtitle: Row(
+                      //More Feature : mark star on the person with the highest score
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         (ps.score == maxScore)
